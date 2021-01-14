@@ -1,4 +1,5 @@
 using Dapper.WebAPI.Helpers;
+using Dapper.WebAPI.Middleware;
 using Dapper.WebAPI.Services;
 using Dapper.WebAPI.Services.Interface;
 using Dapper.WebAPI.Services.Queries;
@@ -7,6 +8,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NSwag;
+using NSwag.Generation.Processors.Security;
 
 namespace Dapper.WebAPI
 {
@@ -35,7 +38,20 @@ namespace Dapper.WebAPI
             services.AddOpenApiDocument(config =>
             {
                 config.Title = "ASPNET CORE 3.1/WebAPI/Dapper Async/MSSQL Prototype";
+                config.OperationProcessors.Add(new OperationSecurityScopeProcessor("ApiKey"));
+                // Add custom document processors, etc.
+                config.DocumentProcessors.Add(new SecurityDefinitionAppender("ApiKey", new OpenApiSecurityScheme
+                {
+                    Type = OpenApiSecuritySchemeType.ApiKey,
+                    Name = "ApiKey",
+                    In = OpenApiSecurityApiKeyLocation.Header,
+                    Description = "Add your Api Key"
+                }));
             });
+            
+            
+
+
             services.AddControllers();
         }
 
@@ -56,6 +72,8 @@ namespace Dapper.WebAPI
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseMiddleware<ApiKeyMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
