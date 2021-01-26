@@ -6,13 +6,23 @@ import { PersonDropComponent } from './component/person-drop/person-drop.compone
 import { PersonTreeComponent } from './component/person-tree/person-tree.component';
 
 import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { AuthGuard } from './authentication/auth.guard';
+import { LoginComponent } from './component/login/login.component';
+import { AdminComponent } from './component/admin/admin.component';
+import { HomeComponent } from './component/home/home.component';
+import { Role } from './models/role';
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'addaddress', component: AddressComponent },
-  { path: 'listperson', component: ListPersonComponent },
-  { path: 'presontree', component: PersonTreeComponent },
-  { path: 'presondrop', component: PersonDropComponent }
+  { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'addaddress', component: AddressComponent, canActivate: [AuthGuard] },
+  { path: 'listperson', component: ListPersonComponent, canActivate: [AuthGuard] },
+  { path: 'presontree', component: PersonTreeComponent, canActivate: [AuthGuard] },
+  { path: 'presondrop', component: PersonDropComponent, canActivate: [AuthGuard] },
+  { path: 'home',component: HomeComponent,canActivate: [AuthGuard]},
+  { path: 'admin',component: AdminComponent,canActivate: [AuthGuard],data: { roles: [Role.Admin] }},
+  { path: 'login',component: LoginComponent},
+  // otherwise redirect to home
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

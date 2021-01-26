@@ -11,8 +11,13 @@ import { PersonTreeComponent } from './component/person-tree/person-tree.compone
 import { PersonDropComponent } from './component/person-drop/person-drop.component';
 import { CardComponent } from './component/card/card.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialModule } from './shared-module/material/material.module';
+import { LoginComponent } from './component/login/login.component';
+import { ErrorInterceptor } from './authentication/error.interceptor';
+import { JwtInterceptor } from './authentication/jwt.interceptor';
+import { AdminComponent } from './component/admin/admin.component';
+import { HomeComponent } from './component/home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +27,10 @@ import { MaterialModule } from './shared-module/material/material.module';
     PersonTreeComponent,
     PersonDropComponent,
     CardComponent,
-    DashboardComponent
+    DashboardComponent,
+    HomeComponent,
+    AdminComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +41,8 @@ import { MaterialModule } from './shared-module/material/material.module';
     BrowserAnimationsModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

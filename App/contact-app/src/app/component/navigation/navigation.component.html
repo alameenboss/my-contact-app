@@ -6,15 +6,18 @@
     <span>My Contact App</span>
   </mat-toolbar>
 
-  <mat-sidenav-container class="container">
-    <mat-sidenav #sidenav mode="side" opened class="sidenav" [fixedInViewport]="false">
+  <mat-sidenav-container class="container" >
+    <mat-sidenav #sidenav mode="side"  opened class="sidenav" [fixedInViewport]="false">
 
       <mat-nav-list>
-        <a mat-list-item [routerLink] = "'/addaddress'">Add Address</a>
-        <a mat-list-item [routerLink] = "'/listperson'">List Person</a>
-        <a mat-list-item [routerLink] = "'/presontree'">Person Tree</a>
-        <a mat-list-item [routerLink] = "'/presondrop'">Person Drop</a>
-        
+        <a mat-list-item [routerLink] = "'/'">Dashboard</a>
+        <a mat-list-item [routerLink] = "'/addaddress'" >Add Address</a>
+        <a mat-list-item [routerLink] = "'/listperson'" >List Person</a>
+        <a mat-list-item [routerLink] = "'/presontree'" >Person Tree</a>
+        <a mat-list-item [routerLink] = "'/presondrop'" >Person Drop</a>
+        <a mat-list-item [routerLink] = "'/admin'" *ngIf="isAdmin">Admin</a>
+        <a mat-list-item [routerLink] = "'/home'">Home</a>
+        <a mat-list-item (click)="logout()">Logout</a>
       </mat-nav-list>
     </mat-sidenav>
 
