@@ -1,11 +1,11 @@
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AddressComponent } from './address/address.component';
-import { ListPersonComponent } from './list-person/list-person.component';
-import { PersonDropComponent } from './person-drop/person-drop.component';
-import { PersonTreeComponent } from './person-tree/person-tree.component';
+import { AddressComponent } from './component/address/address.component';
+import { ListPersonComponent } from './component/list-person/list-person.component';
+import { PersonDropComponent } from './component/person-drop/person-drop.component';
+import { PersonTreeComponent } from './component/person-tree/person-tree.component';
 
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
 const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'dashboard', component: DashboardComponent },
