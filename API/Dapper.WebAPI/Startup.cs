@@ -37,6 +37,7 @@ namespace Dapper.WebAPI
 
             var appSettings = appSettingsSection.Get<AppSettings>();
             var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            //JWT Authentication -- Start
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -54,6 +55,7 @@ namespace Dapper.WebAPI
                     ValidateAudience = false
                 };
             });
+            //JWT Authentication -- End
 
             services.AddTransient<ICommandText, CommandText>();
             services.AddTransient<IProductRepository, ProductRepository>();
@@ -70,6 +72,7 @@ namespace Dapper.WebAPI
                 config.Title = "ASPNET CORE 3.1/WebAPI/Dapper Async/MSSQL Prototype";
                 config.OperationProcessors.Add(new OperationSecurityScopeProcessor("ApiKey"));
                 // Add custom document processors, etc.
+                //API Key open api config
                 //config.DocumentProcessors.Add(new SecurityDefinitionAppender("ApiKey", new OpenApiSecurityScheme
                 //{
                 //    Type = OpenApiSecuritySchemeType.ApiKey,
@@ -109,7 +112,7 @@ namespace Dapper.WebAPI
             app.UseAuthentication();
             app.UseAuthorization();
 
-
+            //For api key authentication
             //app.UseMiddleware<ApiKeyMiddleware>();
 
             app.UseEndpoints(endpoints =>

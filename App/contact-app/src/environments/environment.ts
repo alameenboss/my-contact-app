@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  apikey: 'MySecretKey',
   apiUrl: 'https://localhost:5001/api'
 };
 

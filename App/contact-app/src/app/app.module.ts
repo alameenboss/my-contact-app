@@ -18,6 +18,7 @@ import { ErrorInterceptor } from './authentication/error.interceptor';
 import { JwtInterceptor } from './authentication/jwt.interceptor';
 import { AdminComponent } from './component/admin/admin.component';
 import { HomeComponent } from './component/home/home.component';
+import { ApiKeyInterceptor } from './authentication/apikey.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,8 +42,11 @@ import { HomeComponent } from './component/home/home.component';
     BrowserAnimationsModule,
     MaterialModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-  { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
+  providers: [
+    //{ provide: HTTP_INTERCEPTORS, useClass: ApiKeyInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
