@@ -70,9 +70,9 @@ namespace Dapper.WebAPI
             services.AddOpenApiDocument(config =>
             {
                 config.Title = "ASPNET CORE 3.1/WebAPI/Dapper Async/MSSQL Prototype";
-                config.OperationProcessors.Add(new OperationSecurityScopeProcessor("ApiKey"));
-                // Add custom document processors, etc.
-                //API Key open api config
+                //config.OperationProcessors.Add(new OperationSecurityScopeProcessor("ApiKey"));
+                //// Add custom document processors, etc.
+                ////API Key open api config
                 //config.DocumentProcessors.Add(new SecurityDefinitionAppender("ApiKey", new OpenApiSecurityScheme
                 //{
                 //    Type = OpenApiSecuritySchemeType.ApiKey,
@@ -80,6 +80,16 @@ namespace Dapper.WebAPI
                 //    In = OpenApiSecurityApiKeyLocation.Header,
                 //    Description = "Add your Api Key"
                 //}));
+
+                //config.OperationProcessors.Add(new OperationSecurityScopeProcessor("Bearer"));
+                //config.DocumentProcessors.Add(new SecurityDefinitionAppender("Bearer", new OpenApiSecurityScheme
+                //{
+                //    Type = OpenApiSecuritySchemeType.ApiKey,
+                //    Name = "Authorization",
+                //    In = OpenApiSecurityApiKeyLocation.Header,
+                //    Description = "JWT Authorization header using the bearer scheme"
+                //}));
+
             });
             
             
