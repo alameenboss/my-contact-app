@@ -18,6 +18,7 @@ import { JwtInterceptor } from './authentication/jwt.interceptor';
 import { AdminComponent } from './component/admin/admin.component';
 import { HomeComponent } from './component/home/home.component';
 import { ApiKeyInterceptor } from './authentication/apikey.interceptor';
+import { SpinnerInterceptor } from './pages/shared/spinner-overlay/spinner-interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +44,9 @@ import { ApiKeyInterceptor } from './authentication/apikey.interceptor';
   providers: [
     //{ provide: HTTP_INTERCEPTORS, useClass: ApiKeyInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true },
+    
 ],
   bootstrap: [AppComponent]
 })
