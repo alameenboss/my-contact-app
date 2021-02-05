@@ -14,6 +14,10 @@ export class PersonService {
     return this.http.get<any[]>(baseUrl);
   }
 
+  addPerson(person:any) {
+    return this.http.post<any>(baseUrl,person);
+  }
+
   delete(id:number) {
     return this.http.delete(baseUrl+`${id}`)
   }

@@ -1,8 +1,11 @@
-<h1>Contact List</h1>
+<h1>Person List</h1>
 
-<div align="end">
-  <button mat-raised-button color="accent" (click)="showRandomUser()">
-    Show Random User
+<div class="action-wrapper">
+  <button mat-raised-button color="primary" (click)="addPerson()">
+    Create Person
+  </button>
+  <button mat-raised-button color="accent" (click)="showRandomPerson()">
+    Show Random Person
   </button>
 </div>
 
@@ -24,10 +27,10 @@
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
       <mat-cell *matCellDef="let row">
-        <button mat-icon-button color="primary"(click)="edit(row)"> 
+        <button mat-icon-button color="primary"(click)="editPerson(row)"> 
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-icon-button color="warn" (click)="delete(row)">
+        <button mat-icon-button color="warn" (click)="deletePerson(row)">
           <mat-icon>delete</mat-icon>
         </button>
       </mat-cell>

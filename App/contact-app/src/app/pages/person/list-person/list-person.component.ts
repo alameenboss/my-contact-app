@@ -47,7 +47,7 @@ export class ListPersonComponent implements AfterViewInit, OnInit {
     })
   }
 
-  showRandomUser() {
+  showRandomPerson() {
     this.personService.getRandomUser().subscribe((data :any)=> {
       let randomuser =  data.results.map(x=> {
         return {
@@ -62,13 +62,17 @@ export class ListPersonComponent implements AfterViewInit, OnInit {
     })
   }
 
-  edit(person) {
+  addPerson(){
+    this.router.navigateByUrl(`person/addperson`);
+  }
+
+  editPerson(person) {
     this.router.navigateByUrl(`person/editperson/${person.id}`);
   }
 
-  delete(person) {
+  deletePerson(person) {
     const dialogRef = this.dialog.open(ConfiramtionComponent, {
-      width: '100vw',
+      width: '400px',
       data: { id: person.id },
       disableClose:true
     });

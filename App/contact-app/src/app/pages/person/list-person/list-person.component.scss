@@ -1,3 +1,13 @@
 .full-width-table {
   width: 100%;
 }
+
+.action-wrapper{
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+
+  .mat-raised-button{
+    margin-right: 20px;
+  }
+}
