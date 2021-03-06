@@ -20,6 +20,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 const modules = [
   CommonModule,
@@ -42,7 +43,8 @@ const modules = [
   DragDropModule,
   MatDialogModule,
   MatSnackBarModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatCheckboxModule
 ]
 
 @NgModule({
